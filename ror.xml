@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:ror="http://rorweb.com/0.1/" >
+<channel>
+  <title>ROR Sitemap for http://www.littlesisterkaraoke.com/</title>
+  <link>http://www.littlesisterkaraoke.com/</link>
+
+<item>
+     <link>http://www.littlesisterkaraoke.com/</link>
+     <title>Welcome To Little Sister Productions</title>
+     <description>Welcome To Little Sister Productions</description>
+     <ror:updatePeriod>weekly</ror:updatePeriod>
+     <ror:sortOrder>0</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>http://www.littlesisterkaraoke.com/index.html</link>
+     <title>Welcome To Little Sister Productions</title>
+     <description>Welcome To Little Sister Productions</description>
+     <ror:updatePeriod>weekly</ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>http://www.littlesisterkaraoke.com/Shows.html</link>
+     <title>Welcome To Little Sister Productions</title>
+     <description>Welcome To Little Sister Productions</description>
+     <ror:updatePeriod>weekly</ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>http://www.littlesisterkaraoke.com/AboutUs.html</link>
+     <title>Welcome To Little Sister Productions</title>
+     <description>Welcome To Little Sister Productions</description>
+     <ror:updatePeriod>weekly</ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>http://www.littlesisterkaraoke.com/sitemap.html</link>
+     <title>Welcome To Little Sister Productions</title>
+     <description>Welcome To Little Sister Productions</description>
+     <ror:updatePeriod>weekly</ror:updatePeriod>
+     <ror:sortOrder>1</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+<item>
+     <link>http://www.littlesisterkaraoke.com/songSearch/index.php</link>
+     <title>Little Sister Productions Song Lookup</title>
+     <description>Little Sister Productions Song Lookup</description>
+     <ror:updatePeriod>weekly</ror:updatePeriod>
+     <ror:sortOrder>2</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+</channel>
+</rss>
+  
