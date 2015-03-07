@@ -1,11 +1,11 @@
-var littleSisterApp = angular.module('myApp', ['ngRoute', 'littleSisterControllers']);
+var littleSisterApp = angular.module('LittleSisterApp', ['ngRoute', 'littleSisterControllers']);
 
 
 
 littleSisterApp.config(['$routeProvider', function($routeProvider){
    $routeProvider
         .when('/',{
-            templateURL: 'home.html',
+            templateURL: 'partials/home.html',
             controller:  'homeController'
         })
         .otherwise({
