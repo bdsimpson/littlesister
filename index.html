@@ -1,90 +1,165 @@
 <!doctype html>
-<html ng-app="LittleSisterApp">
+<html ng-app="LittleSisterApp" ng-controller="MainController">
 <head>
     <meta charset="utf-8">
-<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
--->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Little Sister Karaoke</title>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-<!--
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-    <!-- Latest compiled and minified CSS -->
+        <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="bootstrap/bootstrap-3.3.2-dist/css/bootstrap.min.css">
 
     <!-- Optional theme -->
-<!--    <link rel="stylesheet" href="bootstrap/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="bootstrap/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
 
-    <!-- Latest compiled and minified JavaScript -->
-<!--    <script src="bootstrap/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="bootstrap/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
 
-    <!-- Google font for Logo -->
+        <!-- Google font for Logo -->
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 
     <!-- AngularJS -->
     <script src="lib/Angular/angular.min.js" type="text/javascript" ></script>
     <script src="lib/Angular/angular-route.min.js"></script>
-    <script src="js/HomeApp.js"></script> <!-- load our application -->
-    <script src="js/controllers/mainCtrl.js"></script> <!-- load our controller -->
+    <script src="js/App.js"></script> <!-- load our application -->
+    <script src="js/controllers.js"></script> <!-- load our controller -->
+
+    <script>
+        $(function(){
+            $(".nav a").on("click", function(){
+               $(".nav").find(".active").removeClass("active");
+               $(this).parent().addClass("active");
+            });
+        });
+    </script>
 
 
     <style>
         body    {
-                    background-image:url("images/rose-background.jpg");
-                }
+        background-image:url("images/rose-background.jpg");
+        }
         .jumbotron {
 
-                    background-image:url("images/soundboard01_big.jpg");
-                    background-size:100% 100%;
+        background-image:url("images/soundboard01_big.jpg");
+        background-size:100% 100%;
 
-                }
+        }
         .shadow {
-                    box-shadow: 0 0 20px black;
-                }
+        box-shadow: 0 0 20px black;
+        }
         .parchment-faded {
-                    background-image:url("images/parchment-faded.jpg");
-                    background-repeat: repeat;
-                }
+        background-image:url("images/parchment-faded.jpg");
+        background-repeat: repeat;
+        }
         .lobster {
-                    font-family:Lobster;
-                    font-weight:bold;
-                    color:#A62A23;
-                }
+        font-family:Lobster;
+        font-weight:bold;
+        color:#A62A23;
+        }
         .lobster a {
-                    font-family:Lobster;
-                    font-weight:bold;
-                    color:#A62A23;
+        font-family:Lobster;
+        font-weight:bold;
+        color:#A62A23;
 
-                }
+        }
         .lobster a:hover {
-                    color:red;
-                }
+        color:red;
+        }
+    </style>
+    <style>
+        .menuButton {
+        background-color:black;
+        background: -webkit-linear-gradient(180deg, red, black); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(180deg, red, black); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(180deg, red, black); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(180deg, red, black); /* Standard syntax */
+        color:white;
+        border-radius:10px;
+        margin-bottom:15px;
+        margin-right:20px;
+        padding: 5px;
+        width:200px;
+        cursor:pointer;
+        }
+        .menuButton:hover {
+        background-color:darkred;
+        background: -webkit-linear-gradient(180deg, darkred, darkgrey); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(180deg, darkred, darkgrey); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(180deg, darkred, darkgrey); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(180deg, darkred, darkgrey); /* Standard syntax */
+        }
+
+        .menuButton img {
+        border-radius:5px;
+        width:40px;
+        height:auto;
+        margin-right:20px;
+        }
+        .menuButton div {
+        display:inline;
+        }
+
+        .subContent {
+        padding-left:20px;
+        }
+
+        .menuOption{
+        display:inline
+
+        min-height:500px;
+        overflow:hidden;
+        }
+
     </style>
 </head>
 <body>
-<!-- Facebook code
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<!-- END Facebook Code -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand lobster" href="#">LSP</a>
+        </div>
 
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav" ng-model="activeOption">
+                <li ng-class="{'active' : home}"><a href="#/home">Home</a></li>
+                <li ng-class="{'active' : shows}"><a href="#/shows">Show List</a></li>
+                <li ng-class="{'active' : staff}"><a href="#/staff">Our DJ's</a></li>
+                <li ng-class="{'active' : alternate}"><a href="#/alternate">Alternate Menu</a></li>
+                <li><a href="songSearch/index.php">Song Book</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <!--
+                <li><a href="https://www.facebook.com/lisa.b.canterberry"><img alt="Visit us on Facebook" style="height:20px" src="images/Facebook-64.png"></a></li>
+                <li><div class="fb-like" style="margin-top:15px;" data-href="http://www.littlesisterkaraoke.com" data-width="50" data-layout="button" data-action="like" data-show-faces="true" data-share="false"></div></li>
+                -->
+            </ul>
+
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
 <div class="container" style="margin-top:20px;">
     <div class="jumbotron shadow">
-        <div class="row shadow" style="margin-right:auto; margin-left:auto; background-color:white; opacity:0.9; border-radius:15px">
+        <div class="row shadow" style="margin-right:auto; margin-left:auto; background-color:white; opacity:0.95; border-radius:15px">
             <div class="col-md-6 col-sm-12 ">
                 <img style="opacity:0.9; border-radius:15px; margin-left:auto; margin-right:auto;" class="img-responsive" src="images/LSP-stretched.jpg" >
 
@@ -106,21 +181,69 @@
 
 </div>
 
+<!-- Start of Controller -->
+<div class="container" >
+
+    <div class="well well-lg shadow parchment-faded" style="overflow:auto;">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+            </div>
+        </nav>
+
+
+
+                    <div style="float:left">
+                        <ul class="list-unstyled">
+                            <li class="shadow  menuButton">
+                                <div>
+                                    <img src="images/mic-Blank.gif">
+                                </div>
+                                <div>Home</div>
+                            </li>
+<!--
+                            <span ng-if="{'active' : home}">
+                                <div style="float:none;" ng-view></div>
+                            </span>
+-->
+                            <li class="shadow  menuButton">
+                                <div>
+                                    <img src="images/mic-Blank.gif">
+                                </div>
+                                <div>Show List</div>
+                            </li>
+                            <li class="shadow  menuButton">
+                                <div>
+                                    <img src="images/mic-Blank.gif">
+                                </div>
+                                <div>Our DJ's</div>
+                            </li>
+                            <li class="shadow  menuButton">
+                                <div>
+                                    <img src="images/mic-Blank.gif">
+                                </div>
+                                <div>Alternate Menu</div>
+                            </li>
+                            <li class="shadow  menuButton">
+                                <div>
+                                    <img src="images/mic-Blank.gif">
+                                </div>
+                                <div>Song Book</div>
+                            </li>
+
+                        </ul>
 
 
 
 
-<div class="container" ng-view>
+            </div>
 
-    <!--  All of this should be in view  -->
+        <div class="subContent" style="display:inline;" ng-if="true" ng-view>
 
-    <!-- Preceding block should be in view -->
+        </div>
+    </div> <!-- end of parchment background -->
 
 
 </div>
-
-
-
 
 <div class="container">
     <div class="well well-lg parchment-faded">
@@ -130,4 +253,5 @@
 
 </body>
 </html>
+
 

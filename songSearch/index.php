@@ -73,8 +73,11 @@
         $("#SuggestionButton").click(function(){
                $("#SuggestionBox").show();
 
-
         }); // end of ("#SuggestionButton").click()
+
+        $("#Logo").click(function(){
+                window.location = "../index.html";
+        });
 
 
         $("#SuggestionBox").click(function(){
@@ -178,6 +181,7 @@
 				position:absolute;
 				top:10px;
 				left:10px;
+				cursor:pointer;
 			}
 		#SearchInput
 			{

@@ -1,15 +1,17 @@
-var littleSisterApp = angular.module('LittleSisterApp', ['ngRoute', 'littleSisterControllers']);
 
 
+var littleSisterApp = angular.module('LittleSisterApp', [
+  'ngRoute',
+  'LittleSisterControllers'
+]);
 
-littleSisterApp.config(['$routeProvider', function($routeProvider){
-   $routeProvider
-        .when('/',{
-            templateURL: 'partials/home.html',
-            controller:  'homeController'
-        })
-        .otherwise({
-            redirectTo: '/'
-        });
+GuitarApp.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.
+      when('/home', {
+        templateUrl: 'partials/home.html',
+        controller: 'homeController'
+      }).
+      otherwise({
+        redirectTo: '/home'
+  });
 }]);
-
