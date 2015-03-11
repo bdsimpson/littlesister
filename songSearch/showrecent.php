@@ -10,7 +10,7 @@
 <Head>
 	<title>Little Sister Productions Recent Additions</title>
   <script src="./jquery/jquery-1.9.1.js"></script>
-  <script src="./jquery/flexgrid-1.1/js/flexgrid.js"></script>
+  <script src="./jquery/flexigrid.js"></script>
 
   <script language="javascript">
     $(document).ready(function(){

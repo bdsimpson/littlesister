@@ -52,7 +52,7 @@
         }
         .jumbotron {
 
-        background-image:url("images/soundboard01_big.jpg");
+        background-image:url("images/concert-blue2.jpg");
         background-size:100% 100%;
 
         }
@@ -79,6 +79,13 @@
         }
     </style>
     <style>
+/*
+        .menu   {
+            position:absolute;
+            height:100%;
+            width:200px;
+        }
+*/
         .menuButton {
         background-color:black;
         background: -webkit-linear-gradient(180deg, red, black); /* For Safari 5.1 to 6.0 */
@@ -88,9 +95,7 @@
         color:white;
         border-radius:10px;
         margin-bottom:15px;
-        margin-right:20px;
         padding: 5px;
-        width:200px;
         cursor:pointer;
         }
         .menuButton:hover {
@@ -111,8 +116,17 @@
         display:inline;
         }
 
+        .menuButton a {
+                margin:0px;
+                display:block;
+                width:100%;
+                height:100%;
+                color:white;
+                text-decoration:none;
+        }
+
         .subContent {
-        padding-left:20px;
+
         }
 
         .menuOption{
@@ -144,7 +158,7 @@
                 <li ng-class="{'active' : home}"><a href="#/home">Home</a></li>
                 <li ng-class="{'active' : shows}"><a href="#/shows">Show List</a></li>
                 <li ng-class="{'active' : staff}"><a href="#/staff">Our DJ's</a></li>
-                <li ng-class="{'active' : alternate}"><a href="#/alternate">Alternate Menu</a></li>
+
                 <li><a href="songSearch/index.php">Song Book</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -185,61 +199,55 @@
 <div class="container" >
 
     <div class="well well-lg shadow parchment-faded" style="overflow:auto;">
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse hidden-sm hidden-xs">
             <div class="container-fluid">
             </div>
         </nav>
+    <div class="row">
+        <div class="menu col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <ul class="list-unstyled">
+                <li class="shadow  menuButton">
+                    <a href="#/home">
+                        <div>
+                            <img src="images/mic-Blank.gif">
+                        </div>
+                        <div>Home</div>
+                    </a>
+                </li>
+                <li class="shadow  menuButton">
+                    <a href="#/shows">
+                        <div>
+                            <img src="images/mic-Blank.gif">
+                        </div>
+                        <div>Show List</div>
+                    </a>
+                </li>
+                <li class="shadow  menuButton">
+                    <a href="#/staff">
+                        <div>
+                            <img src="images/mic-Blank.gif">
+                        </div>
+                        <div>Our DJ's</div>
+                    </a>
+                </li>
 
+                <li class="shadow  menuButton">
+                    <a href="songSearch/index.php">
+                        <div>
+                            <img src="images/mic-Blank.gif">
+                        </div>
+                        <div>Song Book</div>
+                    </a>
+                </li>
 
-
-                    <div style="float:left">
-                        <ul class="list-unstyled">
-                            <li class="shadow  menuButton">
-                                <div>
-                                    <img src="images/mic-Blank.gif">
-                                </div>
-                                <div>Home</div>
-                            </li>
-<!--
-                            <span ng-if="{'active' : home}">
-                                <div style="float:none;" ng-view></div>
-                            </span>
--->
-                            <li class="shadow  menuButton">
-                                <div>
-                                    <img src="images/mic-Blank.gif">
-                                </div>
-                                <div>Show List</div>
-                            </li>
-                            <li class="shadow  menuButton">
-                                <div>
-                                    <img src="images/mic-Blank.gif">
-                                </div>
-                                <div>Our DJ's</div>
-                            </li>
-                            <li class="shadow  menuButton">
-                                <div>
-                                    <img src="images/mic-Blank.gif">
-                                </div>
-                                <div>Alternate Menu</div>
-                            </li>
-                            <li class="shadow  menuButton">
-                                <div>
-                                    <img src="images/mic-Blank.gif">
-                                </div>
-                                <div>Song Book</div>
-                            </li>
-
-                        </ul>
-
-
-
-
-            </div>
-
-        <div class="subContent" style="display:inline;" ng-if="true" ng-view>
-
+            </ul>
         </div>
+
+        <div class="subContent col-xs-12 col-sm-8 col-md-9 col-lg-9" style="display:block;" ng-if="true" ng-view>
+                <!-- AngularJS View Content -->
+        </div>
+
+        </div> <!-- end of row -->
     </div> <!-- end of parchment background -->
 
 
