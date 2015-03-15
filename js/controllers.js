@@ -16,10 +16,17 @@ myApp.controller("HomeController", ['$scope', '$http', function($scope, $http)
 }]
 );
 
-myApp.controller("ShowsController", ['$scope', '$http', function($scope, $http)
+myApp.controller("VenuesController", ['$scope', '$http', function($scope, $http)
 {
-    $scope.$parent.shows=true;
+	$scope.loading=true;
+    $scope.$parent.venues=true;
+    $scope.venues = {};
+    $http.get('API/venues/venues.php')
+    	.success(function(data){
+    		$scope.venues = data;
+    	});
 
+    //$scope.loading = false;
 }]
 );
 

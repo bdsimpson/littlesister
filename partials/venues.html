@@ -1,0 +1,47 @@
+
+
+<!-- LOADING ICON =============================================== -->
+<!-- show loading icon if the loading variable is set to true -->
+<!--
+<p class="text-center" ng-show="loading"><span class="fa fa-meh-o fa-5x fa-spin"></span></p>
+-->
+
+<style>
+	.venueThumb {
+		width:100px;
+		float:left;
+		margin-right:20px;
+	}
+
+	.venueThumb	img {
+		width:100px;
+		height:auto;
+	}
+
+	.venueDesc {
+		width:300px;
+		float:left;
+		margin-bottom:20px;
+
+	}
+
+	.venueWrapper {
+		clear:both;
+	}
+</style>
+<H1><Strong> Our Shows </Strong></H1>
+<hr>
+<div ng-repeat="venue in venues" class="venueWrapper">
+	<div class="venueThumb">
+		<img ng-src="images/venues/{{venue.venueImage}}">
+	</div>
+	<div class="venueDesc">
+		<H2><Strong>{{venue.venueName}}</Strong></H2>
+		<h3>{{venue.venueText}}</h3>
+		<UL class="list-unstyled">
+            <li>{{venue.venueAddress}}</li>
+            <li>{{venue.venueCity}}, {{venue.venueState}} {{venue.venueZip}}</li>
+        </UL>
+	</div>
+	
+</div>

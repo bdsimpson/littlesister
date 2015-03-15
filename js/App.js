@@ -9,9 +9,9 @@ LSApp.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'partials/home.html',
     controller: 'HomeController'
   }).
-  when('/shows', {
-    templateUrl: 'partials/shows.html',
-    controller:  'ShowsController'
+  when('/venues', {
+    templateUrl: 'partials/venues.html',
+    controller:  'VenuesController'
   }).
   when('/staff', {
     templateUrl: 'partials/staff.html',
