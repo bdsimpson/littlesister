@@ -6,10 +6,11 @@
 
 <style>
 	.venueThumb {
-		width:100px;
+		width:120px;
 		display:inline-block;
-		margin-right:20px;
+		margin:20px;
 		overflow:hidden;
+		padding:10px;
 	}
 
 
@@ -28,6 +29,20 @@
 	.bigThumb img{
 		width:200px;
 		height:auto;
+	}
+	.imgOption {
+		cursor:pointer;
+	}
+	.imgOption:hover {
+		background-color:lightblue;
+	}
+	.imgOption:hover .imgDeleteButton {
+		display:block;
+			opacity:1;
+		    -webkit-transition: all 0.2s ease-in-out;
+		    -moz-transition: all 0.2s ease-in-out;
+		    -o-transition: all 0.2s ease-in-out;
+		    transition: all 0.2s ease-in-out;
 	}
 	.imgPlaceHolder {
 		width:200px;
@@ -87,8 +102,21 @@
 	    border: 5px dashed blue;
 	}
 
+	.imgDeleteButton {
+		position:absolute; 
+		top:0px; 
+		right:0px; 
+		z-index:1001;
+		opacity:0;
+		display:none;
+		font-size:18px;
+	}
+	.imgDeleteButton:hover {
+		color:red;
+	}
+
 </style>
-<H1><Strong> New Venue </Strong></H1>
+<H1><Strong> New Venue: {{venue.venueName}} </Strong></H1>
 <hr>
 
 
@@ -135,14 +163,14 @@
 					</div>
 					<div><label for="image_{{venue.id}}">Image</label></div>
 					<!-- Image Selection ================================ -->
-					<div ng-if="venue.venueImage != null">
+					<div ng-show="showImage">
 						<div class="bigThumb">
 							<img ng-src="images/venues/{{venue.venueImage}}">
 						</div>
 						<P>&nbsp;</P>
 					</div>
 					
-					<div ng-if="venue.venueImage == null">
+					<div ng-hide="showImage">
 						<div class="bigThumb">
 							<div class="imgPlaceHolder">&nbsp;</div>
 						</div>
@@ -155,11 +183,12 @@
 					<!-- Modal Window Popup ============================= -->
 					<!--<button ng-click='toggleModal()'>Open Modal Dialog</button>-->
 					<modal-dialog show='modalShown' width='750px' height='60%' >
-						<div ng-controller="NewVenuesController">
+						<div ng-controller="ImagePickerController">
 							  <h1>Choose Existing Image<h1>
 							  <div style="clear:both;">
-								  <div class="venueThumb" ng-repeat="image in images">
-								  	<img ng-src="images/venues/{{image.url}}">
+								  <div class="venueThumb imgOption" style="position:relative;" ng-repeat="(id,image) in images">
+								  	<a ng-click="deleteImage(id)"><div class="imgDeleteButton">[X]</div></a>
+								  	<a ng-click="clicked(id)"><img ng-src="images/venues/{{image.url}}"></a>
 								  </div>
 							  </div>
 							  <div style="display:block; clear:both; margin-top:20px; margin-bottom:20px;">
@@ -191,7 +220,8 @@
 			<div class="event_day lobster"><H2>{{venue.eventDay}}</H2></div>
 
 			<div class="venueThumb">
-				<img ng-src="images/venues/{{venue.venueImage}}">
+				
+				<img ng-if="venue.venueImage != null" ng-src="images/venues/{{venue.venueImage}}">
 			</div>
 
 			<div class="venueDesc">

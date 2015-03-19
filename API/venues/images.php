@@ -12,15 +12,26 @@ switch ($method) {
     //rest_put($request);  
     break;
   case 'POST':
-    rest_post($request[0]);  
+ 	if($request[0] == 'delete'){
+  		if(isset($request[1])){
+  			rest_delete($request[1]);
+  		}else{
+  			//echo false;
+  		}
+  	}else{
+    	
+    	//rest_post($request[0]);  
+	}
     break;
   case 'GET':
+  	//die(implode(",",$request));
     rest_get($request[0]);  
     break;
   case 'HEAD':
    // rest_head($request);  
     break;
   case 'DELETE':
+    //echo "Deleting: ".$request;
     //rest_delete($request);  
     break;
   case 'OPTIONS':
@@ -74,6 +85,17 @@ function save_file($file){
 		move_uploaded_file($file['tmp_name'] , $destination);
 		return true;
 	}catch(Exception $e){
+		return false;
+	}
+}
+
+function rest_delete($imageID){
+	if(trim($imageID) == "" || $imageID == NULL){
+		return false;
+	}
+	if(images::delete($imageID)){
+		return true;
+	}else{
 		return false;
 	}
 }

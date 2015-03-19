@@ -101,4 +101,33 @@ class images {
 		return $returnValue;
 
 	}
+
+	static function delete($id = null){
+		if($id == null || $id =='' || !is_numeric($id)){
+			return false;
+		}
+		
+		$images = new images;
+		$sqlString = "DELETE FROM $images->table WHERE id = $id;";
+		$db = $images->db;
+		$connection = new mysqli($db->host,$db->user,$db->password,$db->db);
+		if($connection->connect_error){
+			return false;
+			//die('Connection Failed: '. $connection->connect_error);
+		}
+		if($connection->query($sqlString) === TRUE){
+			$returnValue = true;
+		}else{
+			$returnValue = false;
+		}
+
+		$connection->close();
+
+		/***************************************************
+		Insert Image 
+		***************************************************/
+
+
+		return $returnValue;
+	}
 }

@@ -35,10 +35,25 @@ myApp.controller("NewVenuesController", ['$scope', '$http', '$upload', function(
     $scope.loading=true;
     $scope.modalShown=false;
     $scope.$parent.venues=true;
-    $scope.venues = {};
+    $scope.venue = {
+            'id':'',
+            'venueName':'',
+            'venueText':'',
+            'venueAddress':'',
+            'venueCity':'',
+            'venueState':'',
+            'venueZip':'',
+            'eventTime':'',
+            'eventDay':'',
+            'venueImage':null,
+
+    };
+
+    $scope.showImage = false;
     $http.get('API/venues/images.php')
         .success(function(data){
             $scope.images = data;
+            //console.log(data);
             //alert('got it');
         });
     
@@ -46,10 +61,71 @@ myApp.controller("NewVenuesController", ['$scope', '$http', '$upload', function(
         $scope.modalShown = !$scope.modalShown;
     }
 
+
+    $scope.$watch('venue.venueImage',function(){
+        if($scope.venue.venueImage != null){
+            $scope.showImage = true;
+            console.log($scope.showImage);
+        }
+    });
+
+
+
+
+    $scope.loading = false;
+}]
+);  //NewVenuesController
+
+myApp.controller("StaffController", ['$scope', '$http', function($scope, $http)
+{
+    $scope.$parent.staff=true;
+
+}]
+);
+
+myApp.controller("AlternateController", ['$scope', '$http', function($scope, $http)
+{
+    $scope.$parent.alternate=true;
+
+}]
+);
+
+myApp.controller("ImagePickerController", ['$scope', '$http', '$upload', function($scope, $http, $upload){
+
+    $scope.clicked = function(id){
+        url = $scope.images[id].url
+        $scope.$parent.venue.venueImage = url;
+        $scope.$parent.showImage = true;
+        //console.log($scope.$parent.venue);
+        $scope.$parent.toggleModal();
+    }
+
+    $scope.deleteImage = function(id){
+        image = $scope.images[id];
+        console.log(image);
+        
+        
+        $http.post('API/venues/images.php/delete/' + image.id)
+            .success(function(data){
+                    $http.get('API/venues/images.php')
+                        .success(function(data){
+                            $scope.images = data;
+                            //console.log(data);
+                            //alert('got it');
+                        });
+            });
+            
+    };
+
     $scope.$watch('files', function () {
         $scope.upload($scope.files);
         //$scope.files = {};
     });
+
+    $scope.$watch('images', function() {
+        
+    })
+
 
     $scope.upload = function(files) {
         //console.log(files);
@@ -70,17 +146,13 @@ myApp.controller("NewVenuesController", ['$scope', '$http', '$upload', function(
                     $http.get('API/venues/images.php')
                         .success(function(data){
                             $scope.files = {};
-
-                             setTimeout(function(){
-                                console.log('images being reset');
-                                $scope.$apply(function(){
-                                    $scope.files = {};
-                                    $scope.images = data;
-                                    console.log($scope.images);
-                                })
-                             },1000)
-
-
+                            $scope.images=data;
+                            //console.log(file);
+                            url = file.name;
+                            $scope.$parent.venue.venueImage = url;
+                            $scope.$parent.showImage = true;
+                            console.log($scope.$parent.venue);
+                            $scope.$parent.toggleModal();
                             
                             //alert('got it');
                         });
@@ -88,22 +160,6 @@ myApp.controller("NewVenuesController", ['$scope', '$http', '$upload', function(
             }
         }
     }; // function $scope.uploadfile(files)
-
-    $scope.loading = false;
-}]
-);  //NewVenuesController
-
-myApp.controller("StaffController", ['$scope', '$http', function($scope, $http)
-{
-    $scope.$parent.staff=true;
-
-}]
-);
-
-myApp.controller("AlternateController", ['$scope', '$http', function($scope, $http)
-{
-    $scope.$parent.alternate=true;
-
 }]
 );
 
